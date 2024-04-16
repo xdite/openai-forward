@@ -21,7 +21,7 @@ start:
     -v $(shell pwd)/Log:/home/openai-forward/Log \
 	-v $(shell pwd)/FLAXKV_DB:/home/openai-forward/FLAXDV_DB \
     -v $(shell pwd)/openai_forward:/home/openai-forward/openai_forward \
-    $(image) --port=8000 --workers=1
+    $(image) --port=8000 --workers=2
 	@make log
 
 
@@ -45,9 +45,6 @@ log:
 
 rm:
 	docker rm -f $(container)
-
-stop:
-	docker stop $(container)
 
 up:
 	@docker-compose  -f $(compose_path) up
